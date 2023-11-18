@@ -35,9 +35,10 @@ function App() {
     <>
       <h1>Advice # {adviceSlip.id}</h1>
       <p className="advice">&#x201C;{adviceSlip.advice}&#x201D;</p>
-      <img src="/img/pattern-divider-desktop.svg" alt="divider" />
+      <img src="/img/pattern-divider-desktop.svg" alt="divider " className="desktop divider" />
+      <img src="/img/pattern-divider-mobile.svg" alt="divider" className="mobile divider" />
       <button className="button" onClick={getAdvice}>
-        <img src="/img/icon-dice.svg" alt="icon" />
+        <img src="/img/icon-dice.svg" alt="icon  " />
       </button>
       <p className="key desktop">
         Press <span>Space</span> to get advice

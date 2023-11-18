@@ -112,6 +112,10 @@ p.key span {
   box-shadow: 0 1rem 0.5rem 0 rgba(0, 0, 0, 0.3);
 }
 
+.mobile {
+  display: none;
+}
+
 @keyframes glow {
   0% {
     box-shadow: 0 0 0 0 var(--neon-green);
@@ -121,5 +125,28 @@ p.key span {
   }
   100% {
     box-shadow: 0 0 0 0 var(--neon-green);
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  button {
+    scale: 1.5;
+  }
+
+  #root {
+    padding: 1rem;
+    padding-bottom: 3rem;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
   }
 }

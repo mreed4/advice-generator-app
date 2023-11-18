@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [adviceSlip, setAdviceSlip] = useState({});
+
+  async function getAdvice() {
+    const response = await fetch("https://api.adviceslip.com/advice");
+    const data = await response.json();
+
+    console.log(data.slip);
+
+    setAdviceSlip(data.slip);
+  }
+
+  useEffect(() => {
+    getAdvice();
+  }, []);
+
+  useEffect(() => {
+    const handleSpacebar = (event) => {
+      if (event.code === "Space") {
+        getAdvice();
+      }
+    };
+
+    window.addEventListener("keydown", handleSpacebar);
+
+    return () => {
+      window.removeEventListener("keydown", handleSpacebar);
+    };
+  }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+      <h1>Advice # {adviceSlip.id}</h1>
+      <p className="advice">&#x201C;{adviceSlip.advice}&#x201D;</p>
+      <img src="/img/pattern-divider-desktop.svg" alt="divider" />
+      <button className="button" onClick={getAdvice}>
+        <img src="/img/icon-dice.svg" alt="icon" />
+      </button>
+      <p className="key desktop">
+        Press <span>Space</span> to get advice
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

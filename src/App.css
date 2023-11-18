@@ -1,42 +1,125 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;800&display=swap");
+/* 800 */
+
+:root {
+  --light-cyan: hsl(193, 38%, 86%);
+  --neon-green: hsl(150, 100%, 66%);
+
+  --grayish-blue: hsl(217, 19%, 38%);
+  --dark-grayish-blue: hsl(217, 19%, 24%);
+  --dark-blue: hsl(218, 23%, 16%);
+
+  background-color: var(--dark-blue);
+  font-family: "Manrope", sans-serif;
+  color: var(--light-cyan);
+  font-weight: 800;
+  font-size: 28px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: var(--neon-green);
+  border-radius: 50%;
+  padding: 0.5rem;
+  position: absolute;
+  bottom: -1rem;
+  transform: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+button img {
+  transform: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+button:hover {
+  /* box-shadow: 0 0 0.5rem 0 var(--neon-green); */
+  animation: glow 1500ms ease-in-out infinite;
+}
+
+button:active img {
+  transform: rotate(360deg);
+}
+
+button:active {
+  transform: scale(0.9);
+}
+
+h1 {
+  color: var(--neon-green);
+  font-size: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+p.advice {
+  font-size: 1rem;
+  margin: 1rem 0;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+p.key {
+  position: absolute;
+  bottom: -3rem;
+  font-size: 0.5rem;
+  text-align: center;
+  font-weight: 400;
+  color: var(--grayish-blue);
+  opacity: 0.75;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+p.key span {
+  color: var(--grayish-blue);
+  display: inline-block;
+  margin: 0 0.25rem;
+  border: 1px solid var(--grayish-blue);
+  padding: 2px 0.5rem;
+  padding-bottom: 4px;
+  border-radius: 0.25rem;
+}
+
+#root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-grayish-blue);
+  padding: 2rem;
+  max-width: 500px;
+  border-radius: 1rem;
+  box-shadow: 0 1rem 0.5rem 0 rgba(0, 0, 0, 0.3);
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 0 0 var(--neon-green);
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    box-shadow: 0 0 0.25rem 0 var(--neon-green);
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  100% {
+    box-shadow: 0 0 0 0 var(--neon-green);
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
